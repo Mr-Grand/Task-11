@@ -2,9 +2,6 @@
 
 public class Soldier1 : Soldier
 {
-    
-    public Soldier1() : base("Common_Soldier", 100, 20, 5,1)
+    public Soldier1() : base("Common_Soldier", 100, 20, 5, 1)
     { }
-    
-    
 }

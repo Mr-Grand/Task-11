@@ -2,9 +2,9 @@
 
 public class Platoon
 {
-    public string name;
     private List<Soldier> _soldiers = new List<Soldier>();
-    
+    public string name;
+
     public List<Soldier> GetSoldiers()
     {
         return _soldiers;
@@ -38,7 +38,6 @@ public class Platoon
             }
             // Ошибка, думаю можно сделать с циклом вайл и ремув по индексу
         }
-
         foreach (Soldier soldier in deadSoldiers)
         {
             _soldiers.Remove(soldier);

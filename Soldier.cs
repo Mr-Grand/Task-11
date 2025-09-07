@@ -2,11 +2,11 @@
 
 public class Soldier
 {
-    public readonly string Id;
-    public int Health { get; private set; }
     protected double Damage;
     protected readonly int Armour;
     protected int TargetCount;
+    public readonly string Id;
+    public int Health { get; private set; }
 
     public Soldier(string id, int health, double damage, int armour, int targetCount)
     {
@@ -29,17 +29,17 @@ public class Soldier
     protected void ApplyDamageTo(Soldier target, double amount)
     {
         target.TakeDamage(amount);
-    } 
-    
+    }
+
     protected virtual void DealDamage(Soldier enemySoldier)
     {
         double damageDone = Damage;
-        ApplyDamageTo(enemySoldier,damageDone);
+        ApplyDamageTo(enemySoldier, damageDone);
     }
 
     protected virtual void TakeDamage(double damage)
     {
-        this.Health -= Convert.ToInt32(damage);
+        this.Health -= (Convert.ToInt32(damage) - Armour);
     }
 
     protected virtual List<Soldier> ChooseTarget(List<Soldier> soldiers)
@@ -50,7 +50,7 @@ public class Soldier
             int randomTarget = RandomClass.Random.Next(0, soldiers.Count);
             //Console.Write(randomTarget+1);
             // Вывод выбранной цели для атаки
-            choosenSoldiers.Add(soldiers[randomTarget]);   
+            choosenSoldiers.Add(soldiers[randomTarget]);
         }
         return choosenSoldiers;
     }

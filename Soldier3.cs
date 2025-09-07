@@ -3,8 +3,7 @@
 public class Soldier3 : Soldier
 {
     public Soldier3() : base("Improved_Soldier_SeveralNonrepeatableTargets", 60, 15, 5, 3)
-    {
-    }
+    { }
 
     protected override List<Soldier> ChooseTarget(List<Soldier> soldiers)
     {
@@ -19,7 +18,7 @@ public class Soldier3 : Soldier
             {
                 //Console.Write($"{randomTarget+1} ");
                 // Вывод выбранной цели для атаки
-                choosenSoldiers.Add(soldiers[randomTarget]);   
+                choosenSoldiers.Add(soldiers[randomTarget]);
                 choosenTargets.Add(randomTarget);
                 i++;
             }
