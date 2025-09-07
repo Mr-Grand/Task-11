@@ -2,6 +2,7 @@
 
 public class Platoon
 {
+    public string name;
     private List<Soldier> _soldiers = new List<Soldier>();
     
     public List<Soldier> GetSoldiers()
@@ -21,7 +22,8 @@ public class Platoon
         {
             i++;
             soldier.Attack(enemyPlatoon);
-            Console.WriteLine($"\nСолдат {i} атаковал!");
+            //Console.WriteLine($"\nСолдат {i} атаковал!");
+            // Вывод от атакующего
         }
     }
 

@@ -10,11 +10,10 @@ class Program
         
         ShowSoldiersCountInPlatoon(platoon1);
         ShowSoldiersCountInPlatoon(platoon2);
-        
-        StartBattle(platoon1, platoon2);
-        RestAfterBattle(platoon1, platoon2);
 
-        Console.WriteLine();
+        StartBattle(platoon1, platoon2);
+        ShowSoldiersCountInPlatoon(platoon1);
+        ShowSoldiersCountInPlatoon(platoon2);
         
         
     }
@@ -40,6 +39,7 @@ class Program
         }
         
         Console.WriteLine(new string('-', 30));
+        Console.WriteLine(platoon.name);
         Console.WriteLine($"Soldiers1: {countSoldiers1}");
         if(countSoldiers2 > 0)
             Console.WriteLine($"Soldiers2: {countSoldiers2}");
@@ -47,11 +47,11 @@ class Program
             Console.WriteLine($"Soldiers3: {countSoldiers3}");
         if(countSoldiers4 > 0)
             Console.WriteLine($"Soldiers4: {countSoldiers4}");
+        Console.WriteLine(new string('-', 30));
     }
 
-    public static void StartBattle(Platoon platoon1, Platoon platoon2)
+    public static void StartFight(Platoon platoon1, Platoon platoon2)
     {
-        
         platoon1.BeginAttack(platoon2);
         platoon2.BeginAttack(platoon1);
     }
@@ -60,5 +60,27 @@ class Program
     {
         platoon1.CheckAndRemoveDeadSoldiers();
         platoon2.CheckAndRemoveDeadSoldiers();
+    }
+
+    public static void StartBattle(Platoon platoon1, Platoon platoon2)
+    {
+        while (platoon1.GetSoldiers().Count != 0 && platoon2.GetSoldiers().Count != 0)
+        {
+            StartFight(platoon1, platoon2);
+            RestAfterBattle(platoon1, platoon2);
+        }
+
+        if (platoon1.GetSoldiers().Count == 0)
+        {
+            Console.WriteLine("Platoon 2 won!");
+        }
+        if (platoon2.GetSoldiers().Count == 0)
+        {
+            Console.WriteLine("Platoon 1 won!");
+        }
+        if (platoon1.GetSoldiers().Count == 0 && platoon2.GetSoldiers().Count == 0)
+        {
+            Console.WriteLine("");
+        }
     }
 }

@@ -2,10 +2,13 @@
 
 public class PlatoonFactory
 {
+    public static int platoonCount = 0;
     private readonly int _maximumSoldiers = 10;
     public Platoon CreateSoldiers()
     {
+        platoonCount++;
         Platoon platoon = new Platoon();
+        platoon.name = "Platoon " + Convert.ToInt32(platoonCount);
         
         int soldiersCount = _maximumSoldiers;
         int soldier1Count = 4;

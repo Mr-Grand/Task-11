@@ -48,7 +48,8 @@ public class Soldier
         for (int i = 0; i < TargetCount; i++)
         {
             int randomTarget = RandomClass.Random.Next(0, soldiers.Count);
-            Console.Write(randomTarget+1);
+            //Console.Write(randomTarget+1);
+            // Вывод выбранной цели для атаки
             choosenSoldiers.Add(soldiers[randomTarget]);   
         }
         return choosenSoldiers;
