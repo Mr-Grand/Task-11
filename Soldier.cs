@@ -2,10 +2,11 @@
 
 public class Soldier
 {
+    public readonly string Id;
     protected double Damage;
     protected readonly int Armour;
     protected int TargetCount;
-    public readonly string Id;
+    
     public int Health { get; private set; }
 
     public Soldier(string id, int health, double damage, int armour, int targetCount)
@@ -19,7 +20,7 @@ public class Soldier
 
     public virtual void Attack(Platoon enemyPlatoon)
     {
-        var enemyPlatoonSoldiers = ChooseTarget(enemyPlatoon.GetSoldiers());
+        var enemyPlatoonSoldiers = ChooseTarget(enemyPlatoon.Soldiers);
         foreach (var soldier in enemyPlatoonSoldiers)
         {
             this.DealDamage(soldier);
@@ -39,10 +40,11 @@ public class Soldier
 
     protected virtual void TakeDamage(double damage)
     {
-        this.Health -= (Convert.ToInt32(damage) - Armour);
+        int checkDamage = Math.Max(0, (int)Math.Round(damage - Armour));
+        Health -= checkDamage;
     }
 
-    protected virtual List<Soldier> ChooseTarget(List<Soldier> soldiers)
+    protected virtual List<Soldier> ChooseTarget(IReadOnlyList<Soldier> soldiers)
     {
         List<Soldier> choosenSoldiers = new List<Soldier>();
         for (int i = 0; i < TargetCount; i++)

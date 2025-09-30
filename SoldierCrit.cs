@@ -1,10 +1,10 @@
 ﻿namespace Task_11;
 
-public class Soldier2 : Soldier
+public class SoldierCrit : Soldier
 {
     private readonly double _damageMultiplier = 1.5;
 
-    public Soldier2() : base("Improved_Soldier_damageMultiplier", 80, 20, 5, 1)
+    public SoldierCrit() : base("Improved_Soldier_damageMultiplier", 80, 20, 5, 1)
     { }
 
     protected override void DealDamage(Soldier enemySoldier)

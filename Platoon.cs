@@ -2,13 +2,10 @@
 
 public class Platoon
 {
+    public string Name;
     private List<Soldier> _soldiers = new List<Soldier>();
-    public string name;
-
-    public List<Soldier> GetSoldiers()
-    {
-        return _soldiers;
-    }
+    
+    public IReadOnlyList<Soldier> Soldiers => _soldiers;
 
     public void AddSoldier(Soldier soldier)
     {
@@ -29,18 +26,6 @@ public class Platoon
 
     public void CheckAndRemoveDeadSoldiers()
     {
-        List<Soldier> deadSoldiers = new List<Soldier>();
-        foreach (Soldier soldier in _soldiers)
-        {
-            if (soldier.Health <= 0)
-            {
-                deadSoldiers.Add(soldier);
-            }
-            // Ошибка, думаю можно сделать с циклом вайл и ремув по индексу
-        }
-        foreach (Soldier soldier in deadSoldiers)
-        {
-            _soldiers.Remove(soldier);
-        }
+        _soldiers.RemoveAll(soldier => soldier.Health <= 0);
     }
 }

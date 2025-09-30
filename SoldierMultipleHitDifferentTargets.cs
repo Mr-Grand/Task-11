@@ -1,11 +1,11 @@
 ﻿namespace Task_11;
 
-public class Soldier3 : Soldier
+public class SoldierMultipleHitDifferentTargets : Soldier
 {
-    public Soldier3() : base("Improved_Soldier_SeveralNonrepeatableTargets", 60, 15, 5, 3)
+    public SoldierMultipleHitDifferentTargets() : base("Improved_Soldier_SeveralNonrepeatableTargets", 60, 15, 5, 3)
     { }
 
-    protected override List<Soldier> ChooseTarget(List<Soldier> soldiers)
+    protected override List<Soldier> ChooseTarget(IReadOnlyList<Soldier> soldiers)
     {
         List<Soldier> choosenSoldiers = new List<Soldier>();
         List<int> choosenTargets = new List<int>();

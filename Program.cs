@@ -17,7 +17,7 @@ class Program
 
     public static void ShowSoldiersCountInPlatoon(Platoon platoon)
     {
-        IReadOnlyList<Soldier> soldiersInPlatoon = platoon.GetSoldiers();
+        IReadOnlyList<Soldier> soldiersInPlatoon = platoon.Soldiers;
         int countSoldiers1 = 0;
         int countSoldiers2 = 0;
         int countSoldiers3 = 0;
@@ -36,7 +36,7 @@ class Program
         }
 
         Console.WriteLine(new string('-', 30));
-        Console.WriteLine(platoon.name);
+        Console.WriteLine(platoon.Name);
         Console.WriteLine($"Soldiers1: {countSoldiers1}");
         if (countSoldiers2 > 0)
             Console.WriteLine($"Soldiers2: {countSoldiers2}");
@@ -61,23 +61,23 @@ class Program
 
     public static void StartBattle(Platoon platoon1, Platoon platoon2)
     {
-        while (platoon1.GetSoldiers().Count != 0 && platoon2.GetSoldiers().Count != 0)
+        while (platoon1.Soldiers.Count != 0 && platoon2.Soldiers.Count != 0)
         {
             StartFight(platoon1, platoon2);
             RestAfterBattle(platoon1, platoon2);
         }
 
-        if (platoon1.GetSoldiers().Count == 0)
+        if (platoon1.Soldiers.Count == 0)
         {
             Console.WriteLine("Platoon 2 won!");
         }
 
-        if (platoon2.GetSoldiers().Count == 0)
+        if (platoon2.Soldiers.Count == 0)
         {
             Console.WriteLine("Platoon 1 won!");
         }
 
-        if (platoon1.GetSoldiers().Count == 0 && platoon2.GetSoldiers().Count == 0)
+        if (platoon1.Soldiers.Count == 0 && platoon2.Soldiers.Count == 0)
         {
             Console.WriteLine("");
         }
