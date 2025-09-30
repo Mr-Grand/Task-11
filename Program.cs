@@ -79,7 +79,7 @@ class Program
 
         if (platoon1.Soldiers.Count == 0 && platoon2.Soldiers.Count == 0)
         {
-            Console.WriteLine("");
+            Console.WriteLine("Ничья");
         }
     }
 }

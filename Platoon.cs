@@ -2,11 +2,38 @@
 
 public class Platoon
 {
-    public string Name;
+    private string _name;
     private List<Soldier> _soldiers = new List<Soldier>();
     
     public IReadOnlyList<Soldier> Soldiers => _soldiers;
 
+    public string Name
+    {
+        get
+        {
+            if (!string.IsNullOrEmpty(_name))
+            {
+                return _name;
+            }
+            else
+            {
+                Console.WriteLine("Platoon Name is empty");
+                return string.Empty;
+            }
+        }
+        set
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                Console.WriteLine("Platoon Name is empty");
+            }
+            else
+            {
+                _name = value;
+            }
+        }
+    }
+    
     public void AddSoldier(Soldier soldier)
     {
         _soldiers.Add(soldier);
